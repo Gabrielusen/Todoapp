@@ -8,5 +8,5 @@ class ToDo(models.Model):
 	text = models.CharField(max_length=500)
 
 	def __str__(self):
-		return text_added
+		return text
 		

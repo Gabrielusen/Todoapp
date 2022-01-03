@@ -9,10 +9,11 @@ from django.utils import timezone
 
 
 def index(request):
-	todo_items = ToDo.objects.all().order_by("added_date")
+	todo_items = ToDo.objects.all()
 	context = {'todo_items':todo_items}
 	return render(request, 'index.html', context)
 
+"""
 @csrf_exempt
 def add_todo(request):
 	current_date = timezone.now()
@@ -31,5 +32,5 @@ def delete_todo(request):
 		todo_obj.delete()
 
 	return redirect('index')
-
+"""
  

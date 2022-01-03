@@ -17,6 +17,7 @@
     <div class="justify-content-center text-center">
         <h3 class="mt-5">Create your ToDo now!</h3>
         <form action="/add_todo" method="POST">
+        	{% csrf_token %}
             <input type="text" name="todo_text" placeholder="Add ToDo" style="margin: 0 3rem;">
             <button class="btn btn-primary" type="submit">Add ToDo</button>
         </form>
