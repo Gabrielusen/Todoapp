@@ -16,7 +16,7 @@
 <body>
     <div class="justify-content-center text-center">
         <h3 class="mt-5">Create your ToDo now!</h3>
-        <form action="/add_todo" method="POST">
+        <form action="/" method="POST">
         	{% csrf_token %}
             <input type="text" name="todo_text" placeholder="Add ToDo" style="margin: 0 3rem;">
             <button class="btn btn-primary" type="submit">Add ToDo</button>
@@ -27,13 +27,13 @@
         <div class="col-12 table-responsive">
             <table class="table">
                 <tbody>
-                    {% for todo in todo_items %}
+                	{% for todo in todo_text %}
                     <tr>
                         <td>
-                            <p class="lead">{{ todo.text }}</p>
+                            <p class="lead">{{todo.text}}</p>
                         </td>
                         <td class="text-right">
-                            <form method="POST" action="{% url 'delete_todo' todo.id %}">
+                            <form method="POST" action="">
                                 <button type="submit" class="mx-2 btn btn-danger">DELETE</button>
                             </form>
                         </td>

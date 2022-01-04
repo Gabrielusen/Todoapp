@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import ToDo
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
@@ -9,9 +9,17 @@ from django.utils import timezone
 
 
 def index(request):
-	todo_items = ToDo.objects.all()
-	context = {'todo_items':todo_items}
-	return render(request, 'index.html', context)
+	todo_text = ToDo.objects.all()
+	if request.method == 'POST':
+		new_todo = ToDo(
+			text = request.POST.get('title', False)
+			)
+		new_todo.save()
+		return redirect('/')
+	return render(request, 'index.html', {'todo_text': todo_text})
+
+
+
 
 """
 @csrf_exempt
